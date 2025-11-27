@@ -1,0 +1,28 @@
+{
+  "testCase": {
+    "projectId": "eeb9d42b-a933-447c-97b8-0af5f82ae7e7",
+    "title": "Test case 001",
+    "description": "This test case verifies the login functionality.",
+    "priority": "High",
+    "estimatedExecutionTime": 300,
+    "automationStatus": "Manual",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "action": "Open the login page",
+        "expectedResult": "Login page is displayed"
+      },
+      {
+        "stepNumber": 2,
+        "action": "Enter username and password",
+        "expectedResult": "Credentials are accepted"
+      }
+    ],
+    "section": {
+      "id": "d3332cd2-9145-411e-892a-b652b36d3834",
+      "name": "Login"
+    },
+    "comment": "This test case is approved."
+
+  }
+}

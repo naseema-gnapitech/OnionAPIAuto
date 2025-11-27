@@ -1,0 +1,13 @@
+{
+  "projects": [
+    {
+      "id": "proj-001",
+      "name": "Project Alpha",
+      "description": "A sample project"
+    }
+  ],
+  "pageNumber": 1,
+  "itemsPerPage": 10,
+  "total": 50,
+  "totalPages": 5
+}

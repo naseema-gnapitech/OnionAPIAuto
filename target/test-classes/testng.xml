@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API Test Suite">
+    <listeners>
+        <listener class-name="listeners.ExtentReportListener"/>
+    </listeners>
+    <test name="User API Tests">
+
+        <classes>
+            <class name="User.User">
+
+            </class>
+        </classes>
+    </test>
+</suite>
+
