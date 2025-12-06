@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
@@ -12,103 +13,111 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <restassured.version>5.5.0</restassured.version>
     </properties>
+
     <dependencies>
-            <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+
+        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.0.0</version>
+            <version>7.10.2</version>
+            <scope>test</scope>
         </dependency>
+
+        <!-- JSON Libraries -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20220320</version>
         </dependency>
-        <!-- ✅ KEEP ONLY NEW ExtentReports -->
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+
+        <!-- Rest Assured (Unified Version) -->
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>5.4.0</version>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
-            <version>5.4.0</version>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>xml-path</artifactId>
-            <version>5.4.0</version>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.0</version> <!-- Use latest stable version -->
+            <artifactId>json-schema-validator</artifactId>
+            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.9.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+
+        <!-- Hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.relevantcodes</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>2.41.2</version> <!-- latest 2.x version -->
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.1.0</version>
-            <scope>test</scope>
-        </dependency>
+
+        <!-- Extent Reports (Modern v5) -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.1.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <!-- Faker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
-
         </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -123,4 +132,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
