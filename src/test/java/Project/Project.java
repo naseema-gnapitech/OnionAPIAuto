@@ -1,6 +1,6 @@
 package Project;
 
-import AuditLogs.GetTokenPasswordFlow;
+import Config.GetTokenPasswordFlow;
 import com.github.javafaker.Faker;
 import Config.ConfigReader;
 import io.restassured.http.ContentType;
@@ -18,11 +18,10 @@ public class Project {
 
     @Test
     public void getOrganizationProjects() throws IOException {
-       // String token = ConfigReader.get("auth.token");
         String baseUrl = ConfigReader.get("base.url");
         String token = GetTokenPasswordFlow.getAccessToken();
         String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/getOrganizationProjects.json")));
-        String replace = reqBody.replace("Project epipp", new Faker().name().name()).replace("description", new Faker().name().name());
+        String replace = reqBody.replace("2701Project", new Faker().name().name()).replace("description", new Faker().name().name());
         Response response = given().baseUri(baseUrl).
                 header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)
@@ -32,13 +31,16 @@ public class Project {
                 post("/project/getOrganizationProjects");
         System.out.println(response.getStatusCode());
         System.out.println(response.asString());
+        System.out.println("TOKEN = " + token);
+
     }
+
     @Test
     public void addProject() throws IOException {
         String baseUrl = ConfigReader.get("base.url");
         String token = GetTokenPasswordFlow.getAccessToken();
         String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/addProject.json")));
-        String replace = reqBody.replace("Project epipp", new Faker().name().name()).replace("description", new Faker().name().name());
+        String replace = reqBody.replace("Project Gnapi", new Faker().name().name()).replace("description", new Faker().name().name());
         Response response = given().baseUri(baseUrl).
                 header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)
@@ -56,7 +58,7 @@ public class Project {
         Response response = given().baseUri(baseUrl).
                 header("Authorization", " Bearer " + token)
                 .when()
-                .get("/project/48af8633-9574-4b3e-bdf5-72a2a99c1b9c");
+                .get("/project/ea2defd8-2bd0-4d9a-bfa5-13804eb7b109");
         System.out.println(response.getStatusCode());
         System.out.println(response.asString());
 
@@ -73,8 +75,8 @@ public class Project {
                 .log()
                 .all()
                 .body("{\"description\": \"Update124\",\n" +
-                        "\"name\": \"Update126\",\n" +
-                        "\"projectId\": \"8756b902-ed8a-4d07-b7cb-82dd7a257a49\"}")
+                        "\"name\": \"2701Project\",\n" +
+                        "\"projectId\": \"ea2defd8-2bd0-4d9a-bfa5-13804eb7b109\"}")
                 .put("/project/updateProject");
         System.out.println(response.getStatusCode());
         System.out.println(response.asString());
@@ -107,7 +109,7 @@ public class Project {
                 .log()
                 .all()
                 .body("{\n" +
-                        "  \"projectId\": \"68dfa5f4-69c6-4d1d-a00a-9b05dd39fd2b\"\n" +
+                        "  \"projectId\": \"ea2defd8-2bd0-4d9a-bfa5-13804eb7b109\"\n" +
                         "}").
                 post("/project/getProjectUsers");
         System.out.println(response.getStatusCode());

@@ -1,7 +1,7 @@
 package TestCase;
 
-import AuditLogs.GetTokenPasswordFlow;
 import Config.ConfigReader;
+import Config.GetTokenPasswordFlow;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -29,7 +29,7 @@ public class TestCase {
     public void createTestCase() throws IOException {
         String baseUrl = ConfigReader.get("base.url");
         String token = GetTokenPasswordFlow.getAccessToken();
-        String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/createTestCaseWithMandatoryFields.json")));
+        String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/createTestCase.json")));
         Response response = given().baseUri(baseUrl).
                 header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)

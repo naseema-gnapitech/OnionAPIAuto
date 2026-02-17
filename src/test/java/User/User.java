@@ -1,8 +1,8 @@
 package User;
 
 
-import AuditLogs.GetTokenPasswordFlow;
 import Config.ConfigReader;
+import Config.GetTokenPasswordFlow;
 import TestBase.TestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -75,7 +75,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -99,7 +99,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -109,16 +109,16 @@ public class User extends TestBase {
 
    @Test
     public void updateUser() throws IOException {
-        String baseUrl = ConfigReader.get("base.url");
         String token = GetTokenPasswordFlow.getAccessToken();
+       String baseUrl = ConfigReader.get("base.url");
         String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/updateUser.json")));
-        Response response = (Response) given().baseUri(baseUrl)
-                .header("Authorization", "Bearer" + token)
+        Response response = given().baseUri(baseUrl)
+                .header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)
                 .body(reqBody)
                 .when()
-                .put("/user/update")
-               .then()
+                .put("/user/updateUser")
+                .then()
                 .log()
                 .all()
                 .extract().response();
@@ -139,7 +139,7 @@ public class User extends TestBase {
                 .header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)
                 .body("{\n" +
-                        "  \"userId\": \"71cac6f8-7dd4-43e5-80ac-96109fb55c32\"\n" +
+                        "  \"userId\": \"689727e5-1ed0-466f-bf5a-3a2a6ace93b4\"\n" +
                         "}")
                 .when()
                 .delete("user/deleteUser")
@@ -174,7 +174,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -191,7 +191,7 @@ public class User extends TestBase {
                 .header("Content-Type", ContentType.JSON)
                 .body("{\n" +
                         "  \"userId\": \"3faf6a65-28ea-4cc9-8c35-de3dd5cf81af\",\n" +
-                        "  \"newPassword\": \"newSecureP@ssword12345\"\n" +
+                        "  \"newPassword\": \"newSecureP@ssword1234\"\n" +
                         "}")
                 .when()
                 .post("/user/changepassword")
@@ -200,7 +200,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -214,15 +214,11 @@ public class User extends TestBase {
     public void updateCurrentUser() throws IOException {
         String token = GetTokenPasswordFlow.getAccessToken();
         String baseUrl = ConfigReader.get("base.url");
-        String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/addUser.json")));
+        String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/updateCurrentUser.json")));
         Response response = given().baseUri(baseUrl)
                 .header("Authorization", " Bearer " + token)
                 .header("Content-Type", ContentType.JSON)
-                .body("{\n" +
-                        "  \"userId\": \"719ea14c-2d9f-4d9a-8c06-7561096d6c38\",\n" +
-                        "  \"firstName\": \"Naseema\",\n" +
-                        "  \"lastName\": \"Banu\"\n" +
-                        "}")
+                .body(reqBody)
                 .when()
                 .post("/user/updateCurrentUser")
                 .then()
@@ -230,7 +226,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -254,7 +250,7 @@ public class User extends TestBase {
                 .all()
                 .extract().response();
         try {
-            Assert.assertEquals(response.getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusCode(), 201);
             test.pass("Status Code Verified successfully");
         } catch (AssertionError e) {
             test.fail("Status code mismatch! Actual=" + response.getStatusCode());
@@ -263,7 +259,7 @@ public class User extends TestBase {
     }
 
     @Test
-    public void deleteProject() throws IOException {
+    public void updateuser() throws IOException {
         String token = GetTokenPasswordFlow.getAccessToken();
         String baseUrl = ConfigReader.get("base.url");
         String reqBody = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/updateUser.json")));
@@ -272,7 +268,8 @@ public class User extends TestBase {
                 .header("Content-Type", ContentType.JSON)
                 .body(reqBody)
                 .when()
-                .delete("project/archiveProject")   .then()
+                .put("/user/updateUser")
+                .then()
                 .log()
                 .all()
                 .extract().response();
