@@ -1,4 +1,4 @@
-package AuditLogs;
+package Dashboard;
 
 import Config.ConfigReader;
 import io.restassured.http.ContentType;

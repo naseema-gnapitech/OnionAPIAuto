@@ -1,0 +1,59 @@
+{
+  "testCases": [
+    {
+      "id": "Sample Test Case",
+      "title": "Sample Test Case",
+      "description": "This is a sample test case description",
+      "priority": "High",
+      "approvalStatus": "Pending",
+      "preconditions": "User should be logged in",
+      "estimatedExecutionTime": 300,
+      "automationStatus": "Manual",
+      "createdBy": "58b91be9-94d0-4dd7-87b4-0bc975c71d96",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "action": "Click on login button",
+          "expectedResult": "User should be redirected to dashboard"
+        }
+      ],
+      "displayName": "Sample Test Case",
+      "parentId": "",
+      "modifiedBy": "58b91be9-94d0-4dd7-87b4-0bc975c71d96",
+      "status": "Draft",
+      "section": {
+        "id": "default-section",
+        "name": "Default Section"
+      }
+    },
+    {
+      "id": "Another Test Case",
+      "title": "Another Test Case",
+      "description": "Another sample test case",
+      "priority": "Medium",
+      "approvalStatus": "Pending",
+      "preconditions": "System should be running",
+      "estimatedExecutionTime": 600,
+      "automationStatus": "Automated",
+      "createdBy": "58b91be9-94d0-4dd7-87b4-0bc975c71d96",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "action": "Execute automated script",
+          "expectedResult": "Test should pass"
+        }
+      ],
+      "displayName": "Another Test Case",
+      "parentId": "",
+      "modifiedBy": "58b91be9-94d0-4dd7-87b4-0bc975c71d96",
+      "status": "Draft",
+      "section": {
+        "id": "default-section",
+        "name": "Default Section"
+      }
+    }
+  ],
+  "userId": "58b91be9-94d0-4dd7-87b4-0bc975c71d96",
+  "projectId": "4d74b8ca-cd35-4663-bd28-733cf9815658",
+  "organizationId": ""
+}
